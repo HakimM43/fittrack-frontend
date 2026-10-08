@@ -56,32 +56,54 @@ function Dashboard() {
   };
 
   return (
-    <div>
-      <h1>FitTrack</h1>
-      <h2>Dashboard</h2>
-
-      <Link to="/workouts/new">Add Workout</Link>
-
-      <button onClick={handleLogout}>Logout</button>
-
-      {error && <p>{error}</p>}
-
-      {workouts.length === 0 ? (
-        <p>No workouts yet.</p>
-      ) : (
-        workouts.map((workout) => (
-          <div key={workout._id}>
-            <h3>{workout.workoutName}</h3>
-            <p>{workout.exercise}</p>
-            <p>
-              {workout.sets} sets x {workout.reps} reps
-            </p>
-
-            <Link to={`/workouts/${workout._id}`}>View</Link>
+    <main className="dashboard-page">
+      <header className="dashboard-header">
+        <div className="dashboard-brand">
+          <h1>FitTrack</h1>
+          <div className="dashboard-title">
+            <p className="dashboard-eyebrow">TRAINING LOG</p>
+            <h2>Dashboard</h2>
           </div>
-        ))
-      )}
-    </div>
+        </div>
+
+        <nav className="dashboard-actions" aria-label="Dashboard actions">
+          <Link className="dashboard-add-workout" to="/workouts/new">
+            Add Workout
+          </Link>
+          <button className="dashboard-logout" onClick={handleLogout}>
+            Logout
+          </button>
+        </nav>
+      </header>
+
+      <section className="dashboard-content" aria-label="Your workouts">
+        {error && <p className="dashboard-error">{error}</p>}
+
+        {workouts.length === 0 ? (
+          <div className="dashboard-empty-state">
+            <p className="dashboard-empty">No workouts yet.</p>
+          </div>
+        ) : (
+          <div className="workout-grid">
+            {workouts.map((workout) => (
+              <article className="workout-card" key={workout._id}>
+                <h3>{workout.workoutName}</h3>
+                <p className="workout-exercise">{workout.exercise}</p>
+                <p className="workout-summary">
+                  {workout.sets} sets x {workout.reps} reps
+                </p>
+                <Link
+                  className="workout-view"
+                  to={`/workouts/${workout._id}`}
+                >
+                  View
+                </Link>
+              </article>
+            ))}
+          </div>
+        )}
+      </section>
+    </main>
   );
 }
 
