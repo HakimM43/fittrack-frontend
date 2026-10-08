@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function AddWorkout() {
   const navigate = useNavigate();
@@ -55,91 +55,116 @@ function AddWorkout() {
   };
 
   return (
-    <div>
-      <h1>FitTrack</h1>
-      <h2>Add Workout</h2>
-
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Workout Name</label>
-          <br />
-          <input
-            type="text"
-            value={workoutName}
-            onChange={(e) => setWorkoutName(e.target.value)}
-            required
-          />
+    <main className="dashboard-page add-workout-page">
+      <header className="dashboard-header">
+        <div className="dashboard-brand">
+          <h1>FitTrack</h1>
+          <div className="dashboard-title">
+            <p className="dashboard-eyebrow">TRAINING LOG</p>
+            <h2>Add Workout</h2>
+          </div>
         </div>
 
-        <div>
-          <label>Exercise</label>
-          <br />
-          <input
-            type="text"
-            value={exercise}
-            onChange={(e) => setExercise(e.target.value)}
-            required
-          />
+        <Link className="workout-back" to="/dashboard">
+          Back to Dashboard
+        </Link>
+      </header>
+
+      <section
+        className="dashboard-content add-workout-content"
+        aria-label="Add a workout"
+      >
+        <div className="add-workout-card">
+          <form className="add-workout-form" onSubmit={handleSubmit}>
+            <div className="add-workout-field">
+              <label htmlFor="workout-name">Workout Name</label>
+              <input
+                id="workout-name"
+                type="text"
+                value={workoutName}
+                onChange={(e) => setWorkoutName(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="add-workout-field">
+              <label htmlFor="exercise">Exercise</label>
+              <input
+                id="exercise"
+                type="text"
+                value={exercise}
+                onChange={(e) => setExercise(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="add-workout-field">
+              <label htmlFor="muscle-group">Muscle Group</label>
+              <input
+                id="muscle-group"
+                type="text"
+                value={muscleGroup}
+                onChange={(e) => setMuscleGroup(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="add-workout-numeric-grid">
+              <div className="add-workout-field">
+                <label htmlFor="sets">Sets</label>
+                <input
+                  id="sets"
+                  type="number"
+                  value={sets}
+                  onChange={(e) => setSets(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="add-workout-field">
+                <label htmlFor="reps">Reps</label>
+                <input
+                  id="reps"
+                  type="number"
+                  value={reps}
+                  onChange={(e) => setReps(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="add-workout-field">
+                <label htmlFor="weight">Weight</label>
+                <input
+                  id="weight"
+                  type="number"
+                  value={weight}
+                  onChange={(e) => setWeight(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="add-workout-field">
+              <label htmlFor="notes">Notes</label>
+              <textarea
+                id="notes"
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+              />
+            </div>
+
+            {error && <p className="dashboard-error">{error}</p>}
+
+            <button
+              className="dashboard-add-workout add-workout-submit"
+              type="submit"
+            >
+              Add Workout
+            </button>
+          </form>
         </div>
-
-        <div>
-          <label>Muscle Group</label>
-          <br />
-          <input
-            type="text"
-            value={muscleGroup}
-            onChange={(e) => setMuscleGroup(e.target.value)}
-            required
-          />
-        </div>
-
-        <div>
-          <label>Sets</label>
-          <br />
-          <input
-            type="number"
-            value={sets}
-            onChange={(e) => setSets(e.target.value)}
-            required
-          />
-        </div>
-
-        <div>
-          <label>Reps</label>
-          <br />
-          <input
-            type="number"
-            value={reps}
-            onChange={(e) => setReps(e.target.value)}
-            required
-          />
-        </div>
-
-        <div>
-          <label>Weight</label>
-          <br />
-          <input
-            type="number"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-            required
-          />
-        </div>
-
-        <div>
-          <label>Notes</label>
-          <br />
-          <textarea
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-          />
-        </div>
-
-        {error && <p>{error}</p>}
-
-        <button type="submit">Add Workout</button>
-      </form>
-    </div>
+      </section>
+    </main>
   );
 }
 
