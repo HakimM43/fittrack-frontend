@@ -27,7 +27,7 @@ function Dashboard() {
       }
 
       try {
-        const response = await fetch("http://localhost:3000/api/workouts", {
+        const response = await fetch("https://fittrack-backend-1-d2pb.onrender.com/api/workouts", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

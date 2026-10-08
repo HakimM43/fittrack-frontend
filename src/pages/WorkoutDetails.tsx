@@ -30,7 +30,7 @@ function WorkoutDetails() {
 
       try {
         const response = await fetch(
-          `http://localhost:3000/api/workouts/${id}`,
+          `https://fittrack-backend-1-d2pb.onrender.com/api/workouts/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -72,7 +72,7 @@ function WorkoutDetails() {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/workouts/${id}`,
+        `https://fittrack-backend-1-d2pb.onrender.com/api/workouts/${id}`,
         {
           method: "DELETE",
           headers: {

@@ -24,7 +24,7 @@ function AddWorkout() {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/api/workouts", {
+      const response = await fetch("https://fittrack-backend-1-d2pb.onrender.com/api/workouts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
