@@ -41,42 +41,54 @@ function LoginPage() {
   };
 
   return (
-    <div>
-      <h1>FitTrack</h1>
-      <h2>Login</h2>
-
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email</label>
-          <br />
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+    <main className="auth-page">
+      <section className="auth-panel">
+        <div className="auth-brand">
+          <span className="auth-brand-mark" aria-hidden="true">
+            F
+          </span>
+          <h1>FitTrack</h1>
         </div>
 
-        <div>
-          <label>Password</label>
-          <br />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
+        <header className="auth-heading">
+          <p className="auth-eyebrow">MEMBER ACCESS</p>
+          <h2>Welcome back</h2>
+          <p className="auth-description">Log in to your account.</p>
+        </header>
 
-        {error && <p>{error}</p>}
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <div className="auth-field">
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-        <button type="submit">Login</button>
-      </form>
+          <div className="auth-field">
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
 
-      <p>
-        Don't have an account? <Link to="/signup">Sign Up</Link>
-      </p>
-    </div>
+          {error && <p className="auth-error">{error}</p>}
+
+          <button className="auth-submit" type="submit">
+            Login
+          </button>
+        </form>
+
+        <p className="auth-switch">
+          Don't have an account? <Link to="/signup">Sign Up</Link>
+        </p>
+      </section>
+    </main>
   );
 }
 
