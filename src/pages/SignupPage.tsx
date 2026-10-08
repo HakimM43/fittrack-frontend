@@ -40,53 +40,64 @@ function SignupPage() {
   };
 
   return (
-    <div>
-      <h1>FitTrack</h1>
-      <h2>Sign Up</h2>
-
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name</label>
-          <br />
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
+    <main className="auth-page">
+      <section className="auth-panel">
+        <div className="auth-brand">
+          <span className="auth-brand-mark" aria-hidden="true">
+            F
+          </span>
+          <h1>FitTrack</h1>
         </div>
 
-        <div>
-          <label>Email</label>
-          <br />
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
+        <header className="auth-heading">
+          <p className="auth-eyebrow">MEMBER ACCESS</p>
+          <h2>Create your account</h2>
+          <p className="auth-description">Sign up for FitTrack.</p>
+        </header>
 
-        <div>
-          <label>Password</label>
-          <br />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <div className="auth-field">
+            <label>Name</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
 
-        {error && <p>{error}</p>}
+          <div className="auth-field">
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-        <button type="submit">Create Account</button>
-      </form>
+          <div className="auth-field">
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
 
-      <p>
-        Already have an account? <Link to="/login">Login</Link>
-      </p>
-    </div>
+          {error && <p className="auth-error">{error}</p>}
+
+          <button className="auth-submit" type="submit">
+            Create Account
+          </button>
+        </form>
+
+        <p className="auth-switch">
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
+      </section>
+    </main>
   );
 }
 
