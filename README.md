@@ -2,31 +2,125 @@
 
 FitTrack is a full-stack MERN workout tracking application that allows users to create an account, log in, and manage their personal workouts.
 
-The main goal of FitTrack is to give users a simple way to keep track of exercises, muscle groups, sets, reps, weight, and workout notes.
+## Description
+
+FitTrack was created as my final MERN capstone project.
+
+The application includes user authentication, protected routes, and full CRUD functionality for workouts.
+
+Users can:
+
+- Create workouts
+- View all workouts
+- View individual workout details
+- Edit workouts
+- Delete workouts
+- Log in and log out securely
+
+The application is also responsive so it remains usable on smaller screen sizes.
+
+## Getting Started
+
+### Dependencies
+
+Before running FitTrack, you will need:
+
+- Node.js
+- npm
+- Git
+- MongoDB Atlas
+- A modern web browser
+
+### Installing
+
+Clone the frontend repository:
+
+```bash
+git clone https://github.com/HakimM43/fittrack-frontend.git
+```
+
+Move into the frontend folder:
+
+```bash
+cd fittrack-frontend
+```
+
+Install frontend dependencies:
+
+```bash
+npm install
+```
+
+Clone the backend repository:
+
+```bash
+git clone https://github.com/HakimM43/fittrack-backend.git
+```
+
+Move into the backend folder:
+
+```bash
+cd fittrack-backend
+```
+
+Install backend dependencies:
+
+```bash
+npm install
+```
+
+### Environment Variables
+
+Create a `.env` file inside the backend folder.
+
+Add:
+
+```env
+PORT=3000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+```
+
+Do not upload your real `.env` file to GitHub.
+
+### Executing Program
+
+Start the backend:
+
+```bash
+npm run dev
+```
+
+Backend:
+
+```text
+http://localhost:3000
+```
+
+Start the frontend:
+
+```bash
+npm run dev
+```
+
+Frontend:
+
+```text
+http://localhost:5173
+```
 
 ## Features
 
 - User registration
 - User login
 - JWT authentication
-- Protected workout routes
+- Protected routes
 - Create workouts
-- View all workouts
-- View individual workout details
-- Edit workouts
+- Read workouts
+- Update workouts
 - Delete workouts
-- Responsive design for desktop and mobile
-- Error and loading states
-- Confirmation before deleting a workout
-
-## Full CRUD
-
-FitTrack supports full CRUD functionality from the React frontend.
-
-- **Create:** Add a new workout
-- **Read:** View workouts on the dashboard and open workout details
-- **Update:** Edit an existing workout
-- **Delete:** Delete a workout after confirming the action
+- Responsive design
+- Loading and error handling
 
 ## Technologies Used
 
@@ -48,18 +142,56 @@ FitTrack supports full CRUD functionality from the React frontend.
 - bcryptjs
 - CORS
 - dotenv
+- Morgan
 
-## Authentication
+## Full CRUD
 
-FitTrack uses JWT authentication.
+FitTrack supports full CRUD functionality from the frontend.
 
-After a successful login, the frontend stores the token in localStorage. Protected workout requests send the token to the backend using an Authorization Bearer header.
+- **Create:** Add a workout
+- **Read:** View all workouts and individual workout details
+- **Update:** Edit an existing workout
+- **Delete:** Remove an existing workout
 
-Users without a valid token are redirected to the login page.
+## Help
 
-## Installation
+If the application does not start correctly:
 
-### 1. Clone the Frontend Repository
+- Make sure all dependencies were installed with `npm install`
+- Make sure the backend `.env` file contains the required variables
+- Make sure MongoDB Atlas is connected
+- Make sure the backend is running on port 3000
+- Make sure the frontend is running on port 5173
 
-```bash
-git clone https://github.com/HakimM43/fittrack-frontend.git
+## Author
+
+Hakim Mosley
+
+## Version History
+
+### 1.0
+
+- Initial FitTrack release
+- Added user authentication
+- Added protected routes
+- Added full workout CRUD
+- Added MongoDB database integration
+- Added responsive styling
+
+## Future Improvements
+
+Future versions of FitTrack could include:
+
+- Progress charts
+- Personal records
+- Workout history
+- Exercise search
+- Saved workout templates
+- User profile settings
+
+## Acknowledgments
+
+- Per Scholas
+- Bryan Santos
+- Paul Chapman
+- MERN documentation
