@@ -1,78 +1,65 @@
-# React + TypeScript + Vite
+# FitTrack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FitTrack is a full-stack MERN workout tracking application that allows users to create an account, log in, and manage their personal workouts.
 
-Currently, two official plugins are available:
+The main goal of FitTrack is to give users a simple way to keep track of exercises, muscle groups, sets, reps, weight, and workout notes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- User registration
+- User login
+- JWT authentication
+- Protected workout routes
+- Create workouts
+- View all workouts
+- View individual workout details
+- Edit workouts
+- Delete workouts
+- Responsive design for desktop and mobile
+- Error and loading states
+- Confirmation before deleting a workout
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Full CRUD
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+FitTrack supports full CRUD functionality from the React frontend.
 
-## Expanding the ESLint configuration
+- **Create:** Add a new workout
+- **Read:** View workouts on the dashboard and open workout details
+- **Update:** Edit an existing workout
+- **Delete:** Delete a workout after confirming the action
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Technologies Used
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Frontend
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- React
+- TypeScript
+- Vite
+- React Router
+- CSS
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Backend
 
-```
+- Node.js
+- Express
+- MongoDB
+- Mongoose
+- JSON Web Tokens
+- bcryptjs
+- CORS
+- dotenv
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Authentication
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+FitTrack uses JWT authentication.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+After a successful login, the frontend stores the token in localStorage. Protected workout requests send the token to the backend using an Authorization Bearer header.
 
-```
+Users without a valid token are redirected to the login page.
+
+## Installation
+
+### 1. Clone the Frontend Repository
+
+```bash
+git clone https://github.com/HakimM43/fittrack-frontend.git
