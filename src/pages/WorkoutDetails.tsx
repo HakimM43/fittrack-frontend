@@ -95,42 +95,83 @@ function WorkoutDetails() {
   };
 
   if (error) {
-    return <p>{error}</p>;
+    return (
+      <main className="dashboard-page workout-details-page">
+        <p className="workout-state workout-state-error">{error}</p>
+      </main>
+    );
   }
 
   if (!workout) {
-    return <p>Loading...</p>;
+    return (
+      <main className="dashboard-page workout-details-page">
+        <p className="workout-state workout-loading">Loading...</p>
+      </main>
+    );
   }
 
   return (
-    <div>
-      <h1>FitTrack</h1>
+    <main className="dashboard-page workout-details-page">
+      <header className="dashboard-header">
+        <div className="dashboard-brand">
+          <h1>FitTrack</h1>
+          <div className="dashboard-title">
+            <p className="dashboard-eyebrow">WORKOUT DETAILS</p>
+            <h2>{workout.workoutName}</h2>
+          </div>
+        </div>
 
-      <h2>{workout.workoutName}</h2>
+        <Link className="workout-back" to="/dashboard">
+          Back to Dashboard
+        </Link>
+      </header>
 
-      <p>Exercise: {workout.exercise}</p>
-      <p>Muscle Group: {workout.muscleGroup}</p>
-      <p>Sets: {workout.sets}</p>
-      <p>Reps: {workout.reps}</p>
-      <p>Weight: {workout.weight}</p>
-      <p>Notes: {workout.notes}</p>
+      <section
+        className="dashboard-content workout-details-content"
+        aria-label={`${workout.workoutName} details`}
+      >
+        <div className="workout-details-card">
+          <dl className="workout-details-list">
+            <div className="workout-detail">
+              <dt>Exercise</dt>
+              <dd>{workout.exercise}</dd>
+            </div>
+            <div className="workout-detail">
+              <dt>Muscle Group</dt>
+              <dd>{workout.muscleGroup}</dd>
+            </div>
+            <div className="workout-detail">
+              <dt>Sets</dt>
+              <dd>{workout.sets}</dd>
+            </div>
+            <div className="workout-detail">
+              <dt>Reps</dt>
+              <dd>{workout.reps}</dd>
+            </div>
+            <div className="workout-detail">
+              <dt>Weight</dt>
+              <dd>{workout.weight}</dd>
+            </div>
+            <div className="workout-detail workout-detail-notes">
+              <dt>Notes</dt>
+              <dd>{workout.notes}</dd>
+            </div>
+          </dl>
 
-      <Link to={`/workouts/${workout._id}/edit`}>
-        Edit Workout
-      </Link>
-
-      <br />
-
-      <button onClick={handleDelete}>
-        Delete Workout
-      </button>
-
-      <br />
-
-      <Link to="/dashboard">
-        Back to Dashboard
-      </Link>
-    </div>
+          <nav className="workout-detail-actions" aria-label="Workout actions">
+            <Link
+              className="dashboard-add-workout"
+              to={`/workouts/${workout._id}/edit`}
+            >
+              Edit Workout
+            </Link>
+            <button className="workout-delete" onClick={handleDelete}>
+              Delete Workout
+            </button>
+          </nav>
+        </div>
+      </section>
+    </main>
   );
 }
 
